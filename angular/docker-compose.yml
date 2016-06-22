@@ -1,0 +1,9 @@
+web:
+  build: .
+  dockerfile: Dockerfile.local
+  command: gulp serve
+  ports:
+    - 3000:3000
+  volumes:
+    - .:/cwd
+    - /cwd/node_modules

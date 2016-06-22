@@ -1,0 +1,27 @@
+initial README
+
+ ## Development Environment
+
+ We use [Docker Compose] to setup a development environment. Here's a typical Angular configuration:
+
+ `docker-compose.yml`: services we use and link with the app
+ `Dockerfile.local`: a file to define local environment for our app
+
+
+ Run sh in container:
+
+ ```sh
+ docker-compose run web /bin/sh
+ ```
+
+ Boot the stack with:
+
+ ```sh
+ docker-compose up
+ ```
+
+ Whenever you make changes to `Dockerfile.local` you'll have rebuild using:
+
+ ```sh
+ docker-compose build
+ ```
