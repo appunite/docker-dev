@@ -1,0 +1,21 @@
+web:
+  build: .
+  dockerfile: Dockerfile.local
+  command: rails s
+  ports:
+    - 4000:4000
+  volumes:
+    - .:/cwd
+  links:
+    - mongo
+    - redis
+    - influx
+
+mongo:
+  image: mongo
+
+redis:
+  image: redis:latest
+
+influx:
+  image: juttle/influxdb:0.10

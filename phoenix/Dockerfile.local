@@ -1,0 +1,8 @@
+FROM appunite/phoenix
+
+RUN mix local.hex --force && mix local.rebar --force && mix hex.info
+RUN apk --update upgrade && \
+    apk --no-cache add postgresql-client build-base erlang-dev inotify-tools python ruby && \
+    rm -rf /var/cache/apk/*
+
+RUN gem install sass --no-ri --no-rdoc

@@ -1,0 +1,24 @@
+FROM ruby:2.3.1-slim
+
+RUN apt-get update && apt-get install -y \
+      exiftool \
+      git \
+      inotify-tools \
+      curl \
+      make \
+      gcc \
+      build-essential \
+      libxml++2.6-dev libxml2-dev \
+      libgcrypt-dev \
+      libxslt-dev \
+      imagemagick \
+      nodejs \
+      && apt-get clean
+
+RUN gem install bundler guard
+
+RUN mkdir /cwd
+COPY . /cwd
+RUN cd /cwd && bundle config build.nokogiri --use-system-libraries && bundle install
+RUN rm -rf /cwd/*
+CMD /bin/sh

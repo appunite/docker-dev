@@ -1,0 +1,33 @@
+initial README
+
+ ## Development Environment
+
+ We use [Docker Compose] to setup a development environment. Here's a typical Rails configuration:
+
+ `docker-compose.yml`: services we use and link with the app
+ `Dockerfile.local`: a file to define local environment for our app
+
+ Before anything else, install the deps and create the database:
+
+ ```sh
+ docker-compose run web bundle exec rake db:mongoid:create
+ docker-compose run web RAILS_ENV=test bundle exec rake db:mongoid:create
+ ```
+
+ Run tests with:
+
+ ```sh
+ docker-compose run web bundle exec rspec spec
+ ```
+
+ Boot the stack with:
+
+ ```sh
+ docker-compose up
+ ```
+
+ Whenever you make changes to `Dockerfile.local` you'll have rebuild using:
+
+ ```sh
+ docker-compose build
+ ```
